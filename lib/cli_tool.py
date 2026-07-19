@@ -15,14 +15,7 @@ def add_task(args):
     user = users[args.user]
     task = Task(args.title)
     user.add_task(task)
-    if user in users:
-        users[user]["Task"] = (task)
-        users[user]["completed"] = False
-    else:
-        users[user] = {}
     # - Create a new Task with the given title
-        users[user]["Task"] = (task)
-        users[user]["completed"] = False
     # - Add the task to the user's task list
     
 
@@ -30,21 +23,17 @@ def add_task(args):
 def complete_task(args):
     # - Look up the user by name
     user = users.get(args.user)
-    if user in users:
-    # - Look up the task by title
-        if user:
-    # - Mark the task as complete
-            for task in user.tasks:
-                if task.title == args.title:
-                    task.complete()
-                    print("Task not found")
-                    return
-                    
-    # - Print appropriate error messages if not found
-                else:
-                    print("Task not found")
-    else:
+    if not user:
         print("User not found")
+        return
+    # - Look up the task by title
+    task = user.get_task_by_title(args.title)
+    # - Mark the task as complete
+    if not task:
+    # - Print appropriate error messages if not found
+        print("Task not found")
+        return
+    task.complete()
     
 
 # CLI entry point
