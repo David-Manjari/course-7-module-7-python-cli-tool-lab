@@ -7,11 +7,11 @@ class Task:
         # TODO: Assign the title
         self.title = title
         # TODO: Set completed to False
-        self.complete = False
+        self.completed = False
 
     def complete(self):
         # TODO: Mark the task as complete
-        self.complete = True
+        self.completed = True
         # TODO: Print a confirmation message
         print(f"Task '{self.title}' completed.")
 
