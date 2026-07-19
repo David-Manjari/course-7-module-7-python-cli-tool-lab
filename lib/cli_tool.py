@@ -37,8 +37,9 @@ def complete_task(args):
             for task in user.tasks:
                 if task.title == args.title:
                     task.complete()
-                    return
                     print("Task not found")
+                    return
+                    
     # - Print appropriate error messages if not found
                 else:
                     print("Task not found")
